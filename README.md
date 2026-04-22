@@ -30,7 +30,7 @@ This project demonstrates a complete data engineering and analytics workflow:
 
 ### India Trade Balance (2018-2024)
 
-India has consistently maintained a **trade deficit** throughout the 2018-2024 period, meaning imports have exceeded exports every year. The deficit narrowed temporarily in 2020 (likely due to pandemic-related disruptions) but widened significantly post-2021, reaching its highest level in 2024 at **₹27,782 Million**.
+India has consistently maintained a **trade deficit** throughout the 2018-2024 period, meaning imports have exceeded exports every year. The deficit narrowed temporarily in 2020 (likely due to pandemic-related disruptions) but widened significantly post-2021, reaching its highest level in 2024 at **27,782 Million**.
 
 ```sql
 SELECT 
@@ -60,3 +60,29 @@ ORDER BY year;
 ```
 
 ![Plot](plots/Figure_1.png)
+
+### Top 10 Highest Tariff Nations & Commodities in 2023
+This analysis identifies countries with the highest protective trade barriers. Morocco and Bolivia dominate the list, with Morocco appearing 4 times across different product categories. The highest tariff rate (33.64%) is imposed by Bolivia on "Other manufactured goods" (HS Code 9). Notably, Argentina, Algeria, and Belize also feature among the most protectionist nations for specific commodity categories.
+
+```sql
+SELECT 
+    Market_Label as country,
+    HSCode,
+    ProductCategory_Label as product_category,
+    Simple_average_of_rates as tariff_rate_percent
+FROM tariff_rates
+WHERE year = 2023
+    AND Simple_average_of_rates IS NOT NULL
+ORDER BY Simple_average_of_rates DESC
+LIMIT 10;
+```
+```markdown
+| Rank | Country | Highest Tariff (%) | Product Category |
+|------|---------|-------------------|------------------|
+| 1 | Bolivia | 33.64% | Other manufactured goods |
+| 2 | Morocco | 33.11% | Other manufactured goods |
+| 3 | Argentina | 30.19% | Other manufactured goods |
+| 4 | Algeria | 30.00% | Chemical products |
+| 5 | Belize | 30.00% | Machinery & transport equipment |
+```
+![Plot](plots/2.png)
