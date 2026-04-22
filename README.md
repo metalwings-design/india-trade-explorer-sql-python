@@ -85,4 +85,4 @@ LIMIT 10;
 | 4 | Algeria | 30.00% | Chemical products |
 | 5 | Belize | 30.00% | Machinery & transport equipment |
 ```
-![Plot](plots/2.png)
+![Plot](plots/2_tariff_nations.png)
