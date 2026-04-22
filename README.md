@@ -59,4 +59,4 @@ ORDER BY year;
 
 ```
 
-
+![Plot](plots/Figure_1.png)
