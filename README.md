@@ -86,3 +86,36 @@ LIMIT 10;
 | 5 | Belize | 30.00% | Machinery & transport equipment |
 ```
 ![Plot](plots/2_tariff_nations.png)
+
+###  India Container Port Traffic Growth (2010-2024)
+India's container port traffic has shown remarkable growth over the past 15 years, increasing from 9.2 million TEU in 2010 to 23.9 million TEU in 2024 - a 158% increase. This steady upward trend reflects India's growing integration into global trade networks, expanding manufacturing sector, and improving port infrastructure.
+
+```sql
+SELECT 
+    year,
+    Economy_Label as country,
+    twentyftEU as container_volume
+FROM port_traffic
+WHERE Economy_Label = 'India'
+ORDER BY year;
+```
+
+```marakdown
+year	country	container_volume
+2010	India	9235765
+2011	India	9878067
+2012	India	10017480
+2013	India	10571320
+2014	India	11652174
+2015	India	12318610
+2016	India	13724110
+2017	India	15450523
+2018	India	16996593
+2019	India	17487621
+2020	India	17597062
+2021	India	19561769
+2022	India	19717168
+2023	India	22208000
+2024	India	23898000
+```
+![Plot](plots/2_tariff_nations.png)
