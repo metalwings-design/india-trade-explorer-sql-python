@@ -88,34 +88,43 @@ LIMIT 10;
 ![Plot](plots/2_tariff_nations.png)
 
 ###  India Container Port Traffic Growth (2010-2024)
-India's container port traffic has shown remarkable growth over the past 15 years, increasing from 9.2 million TEU in 2010 to 23.9 million TEU in 2024 - a 158% increase. This steady upward trend reflects India's growing integration into global trade networks, expanding manufacturing sector, and improving port infrastructure.
+Container traffic is a key indicator of trade volume and economic activity. China consistently handles 10-12x more container volume than India, reflecting its dominant position in global trade. However, both nations show strong growth trends:
+
+India grew from 9.2M TEU (2010) to 23.9M TEU (2024) → 159% increase
+China grew from 136M TEU (2010) to 299.7M TEU (2024) → 120% increase
 
 ```sql
 SELECT 
     year,
-    Economy_Label as country,
-    twentyftEU as container_volume
+    SUM(CASE WHEN Economy_Label = 'India' THEN twentyftEU ELSE 0 END) as india_volume,
+    SUM(CASE WHEN Economy_Label = 'China' THEN twentyftEU ELSE 0 END) as china_volume
 FROM port_traffic
-WHERE Economy_Label = 'India'
+WHERE Economy_Label IN ('India', 'China')
+GROUP BY year
 ORDER BY year;
+
+
 ```
 
 ```marakdown
-year	country	container_volume
-2010	India	9235765
-2011	India	9878067
-2012	India	10017480
-2013	India	10571320
-2014	India	11652174
-2015	India	12318610
-2016	India	13724110
-2017	India	15450523
-2018	India	16996593
-2019	India	17487621
-2020	India	17597062
-2021	India	19561769
-2022	India	19717168
-2023	India	22208000
-2024	India	23898000
+year,    india_volume,    china_volume
+2010,    9235765.00,        136044183.00
+2011,    9878067.00,        151800937.00
+2012,    10017480.00,        165939400.00
+2013,    10571320.00,        176607144.00
+2014,    11652174.00,        187291913.00
+2015,    12318610.00,        195509165.00
+2016,    13724110.00,        202830580.00
+2017,    15450523.00,        218712874.00
+2018,    16996593.00,        229127700.00
+2019,    17487621.00,        237570000.00
+2020,    17597062.00,        240480000.00
+2021,    19561769.00,        256945700.00
+2022,    19717168.00,        268790000.00
+2023,    22208000.00,        278759834.00
+2024,    23898000.00,        299703800.00
+
 ```
-![Plot](plots/2_tariff_nations.png)
+![Plot](plots/3_vol.png)
+
+
