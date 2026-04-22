@@ -28,9 +28,29 @@ This project demonstrates a complete data engineering and analytics workflow:
 
 ## 🗄️ Database Schema
 
+India Trade Balance (2018-2024)
+
+**SQL Query** (see `code/02_analysis.sql` for full query):
+
+
 ```sql
--- Core tables structure
-exports_india (year, hs_code, product_desc, amt, quantity, partner_country)
-imports_india (year, hs_code, product_desc, amt, quantity, partner_country)
-port_traffic (year, port_name, container_volume_teu, vessel_calls)
-tariff_rates (year, hs_code, country, tariff_rate)
+SELECT 
+    COALESCE(e.year, i.year) as year,
+    COALESCE(SUM(e.amt), 0) as total_exports,
+    COALESCE(SUM(i.amt), 0) as total_imports,
+    COALESCE(SUM(e.amt), 0) - COALESCE(SUM(i.amt), 0) as trade_balance
+FROM exports_india e
+FULL OUTER JOIN imports_india i ON e.year = i.year
+GROUP BY COALESCE(e.year, i.year)
+ORDER BY year;
+
+
+query output:
+year	total_exports	total_imports	trade_balance
+2018	32347653.8000	50379684.1800	-18032030.3800
+2019	30709385.8400	46521510.4200	-15812124.5800
+2020	28597234.9600	38654717.2200	-10057482.2600
+2021	41356431.2000	60079101.8800	-18722670.6800
+2022	44204857.0600	70164953.1800	-25960096.1200
+2023	42833061.8800	66465048.4400	-23631986.5600
+2024	42895045.9000	70677624.5000	-27782578.6000
