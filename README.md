@@ -94,6 +94,7 @@ India grew from 9.2M TEU (2010) to 23.9M TEU (2024) → 159% increase
 China grew from 136M TEU (2010) to 299.7M TEU (2024) → 120% increase
 
 ```sql
+
 SELECT 
     year,
     SUM(CASE WHEN Economy_Label = 'India' THEN twentyftEU ELSE 0 END) as india_volume,
@@ -125,6 +126,6 @@ year,    india_volume,    china_volume
 2024,    23898000.00,        299703800.00
 
 ```
-![Plot](plots/3_vol.png)
 
+![Plot](plots/4_in_chi.png)
 
