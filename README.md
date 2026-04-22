@@ -26,12 +26,11 @@ This project demonstrates a complete data engineering and analytics workflow:
 | Import/Export | [DGFT India](https://www.dgft.gov.in/CP/?opt=itchs-import-export) | India's trade data (2018-2025) |
 | Tariff Rates | [UNCTADstat](https://unctadstat.unctad.org/datacentre/) | Import tariff rates on non-agricultural/non-fuel products |
 
-## 🗄️ Database Schema
+## 🗄️ Finddings
 
-India Trade Balance (2018-2024)
+### India Trade Balance (2018-2024)
 
-**SQL Query** (see `code/02_analysis.sql` for full query):
-
+India has consistently maintained a **trade deficit** throughout the 2018-2024 period, meaning imports have exceeded exports every year. The deficit narrowed temporarily in 2020 (likely due to pandemic-related disruptions) but widened significantly post-2021, reaching its highest level in 2024 at **₹27,782 Million**.
 
 ```sql
 SELECT 
@@ -43,14 +42,21 @@ FROM exports_india e
 FULL OUTER JOIN imports_india i ON e.year = i.year
 GROUP BY COALESCE(e.year, i.year)
 ORDER BY year;
+```
+
+```markdown
+**Query Results:**
+
+| year | total_exports | total_imports | trade_balance |
+|------|--------------|---------------|----------------|
+| 2018 | 32347653.8000 | 50379684.1800 | -18032030.3800 |
+| 2019 | 30709385.8400 | 46521510.4200 | -15812124.5800 |
+| 2020 | 28597234.9600 | 38654717.2200 | -10057482.2600 |
+| 2021 | 41356431.2000 | 60079101.8800 | -18722670.6800 |
+| 2022 | 44204857.0600 | 70164953.1800 | -25960096.1200 |
+| 2023 | 42833061.8800 | 66465048.4400 | -23631986.5600 |
+| 2024 | 42895045.9000 | 70677624.5000 | -27782578.6000 |
+
+```
 
 
-query output:
-year	total_exports	total_imports	trade_balance
-2018	32347653.8000	50379684.1800	-18032030.3800
-2019	30709385.8400	46521510.4200	-15812124.5800
-2020	28597234.9600	38654717.2200	-10057482.2600
-2021	41356431.2000	60079101.8800	-18722670.6800
-2022	44204857.0600	70164953.1800	-25960096.1200
-2023	42833061.8800	66465048.4400	-23631986.5600
-2024	42895045.9000	70677624.5000	-27782578.6000
