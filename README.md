@@ -189,4 +189,13 @@ Rank	Commodity	                                Imports (Million USD)
 10    	Aircraft, spacecraft and parts                	12,698
 ```
 
+![Plot](plots/6_imp.png)
 
+## 🙏 Acknowledgments
+UNCTAD for providing open trade data
+World Bank for HS code reference system
+DGFT India for comprehensive trade statistics
+PostgreSQL and Python open source communities
+
+---
+*Built with PostgreSQL, Python, and ❤️ for trade analytics*
