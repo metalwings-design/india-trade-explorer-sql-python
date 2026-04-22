@@ -26,7 +26,7 @@ This project demonstrates a complete data engineering and analytics workflow:
 | Import/Export | [DGFT India](https://www.dgft.gov.in/CP/?opt=itchs-import-export) | India's trade data (2018-2025) |
 | Tariff Rates | [UNCTADstat](https://unctadstat.unctad.org/datacentre/) | Import tariff rates on non-agricultural/non-fuel products |
 
-## 🗄️ Finddings
+## 🗄️ Findings
 
 ### India Trade Balance (2018-2024)
 
@@ -193,8 +193,11 @@ Rank	Commodity	                                Imports (Million USD)
 
 ## 🙏 Acknowledgments
 UNCTAD for providing open trade data
+
 World Bank for HS code reference system
+
 DGFT India for comprehensive trade statistics
+
 PostgreSQL and Python open source communities
 
 ---
