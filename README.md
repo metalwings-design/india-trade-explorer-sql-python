@@ -47,7 +47,7 @@ ORDER BY year;
 ```markdown
 **Query Results:**
 
-| year | total_exports | total_imports | trade_balance |
+| year | total_exports | total_imports | trade_balance(mn) |
 |------|--------------|---------------|----------------|
 | 2018 | 32347653.8000 | 50379684.1800 | -18032030.3800 |
 | 2019 | 30709385.8400 | 46521510.4200 | -15812124.5800 |
@@ -158,3 +158,6 @@ Rank	Commodity	                        Exports (Million USD)
 9	    Cereals	                                10,994
 10	    Articles of iron or steel	            9,939
 ```
+
+![Plot](plots/5_exp.png)
+
