@@ -90,7 +90,8 @@ LIMIT 10;
 ###  India Container Port Traffic Growth (2010-2024)
 Container traffic is a key indicator of trade volume and economic activity. China consistently handles 10-12x more container volume than India, reflecting its dominant position in global trade. However, both nations show strong growth trends:
 
-India grew from 9.2M TEU (2010) to 23.9M TEU (2024) → 159% increase
+India grew from 9.2M TEU (2010) to 23.9M TEU (2024) → 159% increase;
+
 China grew from 136M TEU (2010) to 299.7M TEU (2024) → 120% increase
 
 ```sql
@@ -129,3 +130,31 @@ year,    india_volume,    china_volume
 
 ![Plot](plots/4_in_chi.png)
 
+### India's Top 10 Export Products (2023)
+Mineral fuels (primarily petroleum products) dominate India's exports at $87.6 billion, accounting for nearly 25% of total exports. This is followed by electrical machinery ($34.4B) and gems & jewelry ($32.9B). The top 3 products alone represent over 50% of India's export basket.
+
+```sql
+SELECT 
+    Commodity,
+    amt as exports_million_usd_2023
+FROM exports_india
+WHERE year = 2023
+    AND amt > 0
+ORDER BY amt DESC
+LIMIT 10;
+```
+
+```markdown
+
+Rank	Commodity	                        Exports (Million USD)
+1	    Mineral fuels, mineral oils            	87,602
+2	    Electrical machinery & equipment	    34,413
+3    	Gems, precious stones & jewelry	        32,853
+4    	Nuclear reactors, boilers, machinery    30,057
+5    	Pharmaceutical products	                22,106
+6	    Vehicles & auto parts	                20,889
+7	    Organic chemicals	                    20,312
+8	    Iron and steel	                        11,859
+9	    Cereals	                                10,994
+10	    Articles of iron or steel	            9,939
+```
