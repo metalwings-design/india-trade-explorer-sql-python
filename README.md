@@ -161,3 +161,32 @@ Rank	Commodity	                        Exports (Million USD)
 
 ![Plot](plots/5_exp.png)
 
+### India's Top 10 Import Products (2023)
+Mineral fuels (crude oil and petroleum products) dominate India's imports at $219 billion, representing nearly 40% of total imports. This highlights India's heavy dependence on energy imports. Electrical machinery ($79.3B) and gems & jewelry ($78.5B) follow as the second and third largest import categories.
+
+```sql
+SELECT 
+    Commodity,
+    amt as imports_million_usd_2023
+FROM imports_india
+WHERE year = 2023
+    AND amt > 0
+ORDER BY amt DESC
+LIMIT 10;
+```
+
+```markdown
+Rank	Commodity	                                Imports (Million USD)
+1	    Mineral fuels, mineral oils	                    219,054
+2	    Electrical machinery & equipment	            79,301
+3	    Gems, precious stones & jewelry	                78,474
+4	    Nuclear reactors, boilers, machinery	        57,409
+5	    Organic chemicals	                            26,745
+6	    Plastic and articles thereof	                21,831
+7	    Iron and steel	                                18,646
+8	    Animal/vegetable fats and oils	                15,059
+9	    Optical, photographic, measuring instruments	12,922
+10    	Aircraft, spacecraft and parts                	12,698
+```
+
+
